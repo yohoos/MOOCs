@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 Test</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <script type="text/javascript">
+      var data = [];
+      for (var i=0; i<25; i++) {
+        data.push(Math.round(Math.random() * 250));
+      }
+      var w = 800;
+      var h = 250;
+      var padding = 1;
+      var svg = d3.select("body").append("svg")
+        .attr("width", w).attr("height", h);
+      var rects = svg.selectAll("rect").data(data).enter().append("rect")
+        .attr("x", function(d, i) {
+          return i * (w/data.length);
+        }).attr("y", function(d) {
+          return h - d;
+        }).attr("width", (w/data.length) - padding).attr("height", h).attr("fill", function(d) {
+          return "rgb(0, 0, " + (d) + ")"
+        });
+      var texts = svg.selectAll("text").data(data).enter().append("text").text(function(d) {
+        return d;
+      }).attr("x", function(d, i) {
+        return i * (w/data.length) + (w/data.length - padding)/2;
+      }).attr("y", function(d) {
+        return h - d + 15;
+      }).attr("font-family", "sans-serif").attr("font-size", "11px").attr("fill", "white")
+        .attr("text-anchor", "middle");
+    </script>
+  </body>
+</html>
