@@ -1,0 +1,9 @@
+Gradient Descent:
+
+The reason why the image in the video shows ellipses that are elongated vertically is because the scale for the vertical axis is much smaller than the scale for the horizontal axis.
+
+The reason Andrew has ellipses elongated vertically is because the axis are both scaled to the same length even though the horizontal axis actually holds a far greater range. 
+
+For clarification on why the feature scaling helps with convergence, read this: http://dungba.org/why-should-we-implement-feature-scaling-mostly-all-the-time/
+
+Basically, large range values dominate the cost function causing possible large gradients depending on where the algorithm starts the descent. This forces small learning rate to prevent divergence. Once the gradient starts slowing down, we are now stuck with an extra small learning rate that was used to compensate the large gradients earlier. This makes convergence very slow.
